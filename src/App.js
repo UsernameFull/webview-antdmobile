@@ -4,7 +4,6 @@ import "./styles.css";
 import { Flex, WhiteSpace } from "antd-mobile";
 import "antd-mobile/dist/antd-mobile.css";
 
-import DemoLine from "./chart";
 import TabExample from "./table"
 
 export default function App() {
@@ -19,7 +18,6 @@ const PlaceHolder = ({ className = "", ...restProps }) => (
 
 const FlexExample = () => (
   <div className="flex-container">
-    <DemoLine />
     <TabExample/>
     <div className="sub-title">Basic</div>
     <Flex>
