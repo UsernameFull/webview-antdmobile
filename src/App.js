@@ -5,6 +5,8 @@ import { Flex, WhiteSpace } from "antd-mobile";
 import "antd-mobile/dist/antd-mobile.css";
 
 import TabExample from "./table"
+import NumView from "./numview"
+import TimePicker from "./timepicker"
 
 export default function App() {
   return <FlexExample />;
@@ -19,6 +21,8 @@ const PlaceHolder = ({ className = "", ...restProps }) => (
 const FlexExample = () => (
   <div className="flex-container">
     <TabExample/>
+    <NumView/>
+    <TimePicker/>
     <div className="sub-title">Basic</div>
     <Flex>
       <Flex.Item>

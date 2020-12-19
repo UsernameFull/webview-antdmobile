@@ -1,29 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { Tabs, WhiteSpace, Badge } from 'antd-mobile';
-import DemoLine from "./chart";
+
+import DemoLine_d from "./chart_d";
+import DemoLine_h from "./chart_h";
+import DemoLine_m from "./chart_m";
 
 const tabs = [
-  { title: <Badge >秒</Badge> },
   { title: <Badge >分</Badge> },
   { title: <Badge >时</Badge> },
+  { title: <Badge >天</Badge> },
 ];
-
 
 const TabExample = () => (
   <div>
     <Tabs tabs={tabs}
-      initialPage={1}
+      initialPage={0}
       onChange={(tab, index) => { console.log('onChange', index, tab); }}
       onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '500px', backgroundColor: '#fff' ,padding:'10%'}}>
-        <DemoLine source="aaaa"/>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '200px', backgroundColor: '#fff' ,padding:'10%'}}>
+        <DemoLine_m source="aaaa"/>
       </div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '500px', backgroundColor: '#fff' }}>
-        2
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '200px', backgroundColor: '#fff' ,padding:'10%'}}>
+      <DemoLine_h source="aaaa"/>
       </div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '500px', backgroundColor: '#fff' }}>
-        3
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '200px', backgroundColor: '#fff' ,padding:'10%'}}>
+      <DemoLine_d source="aaaa"/>
       </div>
     </Tabs>
     <WhiteSpace />

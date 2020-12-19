@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "@ant-design/charts";
-const DemoLine = (props) => {
+const DemoLine_h = (props) => {
   const [data, setData] = useState([]);
   const { source } = props;
   // useEffect(() => {
@@ -14,22 +14,26 @@ const DemoLine = (props) => {
   }, []);
 
   const asyncFetch = () => {
-    fetch("http://106.15.91.156:55556/api/getdata", {
+    fetch("http://47.110.147.58:55556/api/getdata", {
       method: "POST",
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        starttime:0,
-        endtime: 10,
-        interval: "second",
+        starttime:parseInt(new Date().getTime()/1000)-3600*24,
+        endtime: parseInt(new Date().getTime()/1000),
+        interval: 60*60,
         source: "sensor1",
       }),
     })
       .then((response) => response.json())
       .then((json) => {
-        console.log(json);
+        // console.log(json);
+        json.data.msg.map((e)=>{
+          e.time = parseInt(e.time/60/60%24)+":"+parseInt(e.time/60%60)
+          // console.log(e.time);
+        })
         return setData(json.data.msg);
       })
       .catch((error) => {
@@ -46,4 +50,4 @@ const DemoLine = (props) => {
   };
   return <Line {...config} />;
 };
-export default DemoLine;
+export default DemoLine_h;
