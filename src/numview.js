@@ -4,13 +4,10 @@ import React, { useState, useEffect } from "react";
 const Item = List.Item;
 const Brief = Item.Brief;
 
-const NumView = () => {
+const NumView = (props) => {
   const [data, setData] = useState([]);
-  useEffect(() => {
-    var interval = setInterval(function () {
-      asyncFetch()
-    }, 5000);
-  }, []);
+  const {ticker} = props
+  useEffect(() => {if (ticker == 1) {asyncFetch();}}, [ticker]);
   const asyncFetch = () => {
     fetch("http://47.110.147.58:55556/api/getdata", {
       method: "POST",
@@ -19,16 +16,15 @@ const NumView = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        starttime:(new Date()).valueOf(),
-        endtime: (new Date()).valueOf()+1,
+        starttime:(new Date()).valueOf()/1000-1,
+        endtime: (new Date()).valueOf()/1000,
         interval: 1,
         source: "sensor1",
       }),
     })
       .then((response) => response.json())
       .then((json) => {
-        // console.log(json);
-        return setData(json.data.msg[0].vaule);
+        return setData(json.data.msg[0].vaule||Math.random());
       })
       .catch((error) => {
         console.log("fetch data failed", error);
@@ -36,8 +32,8 @@ const NumView = () => {
   };
 
   return (
-    <List renderHeader={() => "Basic Style"} className="my-list">
-      <Item extra={"当前数值"}>{data||233}</Item>
+    <List renderHeader={() => "abc"} className="my-list">
+      <Item extra={"当前数值"}>{data}</Item>
     </List>
   );
 };

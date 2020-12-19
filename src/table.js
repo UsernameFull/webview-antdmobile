@@ -11,7 +11,9 @@ const tabs = [
   { title: <Badge >天</Badge> },
 ];
 
-const TabExample = () => (
+const TabExample = (props) => {
+  const {ticker} = props
+  return(
   <div>
     <Tabs tabs={tabs}
       initialPage={0}
@@ -19,17 +21,17 @@ const TabExample = () => (
       onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
     >
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '200px', backgroundColor: '#fff' ,padding:'10%'}}>
-        <DemoLine_m source="aaaa"/>
+        <DemoLine_m ticker = {ticker} source="aaaa"/>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '200px', backgroundColor: '#fff' ,padding:'10%'}}>
-      <DemoLine_h source="aaaa"/>
+      <DemoLine_h ticker = {ticker} source="aaaa"/>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '200px', backgroundColor: '#fff' ,padding:'10%'}}>
-      <DemoLine_d source="aaaa"/>
+      <DemoLine_d ticker = {ticker} source="aaaa"/>
       </div>
     </Tabs>
     <WhiteSpace />
 
   </div>
-);
+)};
 export default TabExample

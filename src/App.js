@@ -1,9 +1,10 @@
-import React from "react";
+import React,{ useState, useEffect } from "react";
 import "./styles.css";
 
 import { Flex, WhiteSpace } from "antd-mobile";
 import "antd-mobile/dist/antd-mobile.css";
 
+import ProgressLine from "./progressline"
 import TabExample from "./table"
 import NumView from "./numview"
 import TimePicker from "./timepicker"
@@ -18,11 +19,27 @@ const PlaceHolder = ({ className = "", ...restProps }) => (
   </div>
 );
 
-const FlexExample = () => (
+const useTicker = () => {
+  const [tick, setTick] = useState(0);
+  useEffect(() => {
+    const start = Date.now();
+    const intervalId = setInterval(() => {
+      setTick(1+Math.floor((Date.now() - start) / 1000 %5));
+    }, 50);
+    return () => clearInterval(intervalId);
+  }, []);
+
+  return tick;
+};
+
+const FlexExample = () => {
+  const count = useTicker();
+  return (
   <div className="flex-container">
-    <TabExample/>
-    <NumView/>
-    <TimePicker/>
+    <ProgressLine percent={count} />
+    <TabExample ticker = {count}/>
+    <NumView ticker = {count}/>
+    {/* <TimePicker/> */}
     <div className="sub-title">Basic</div>
     <Flex>
       <Flex.Item>
@@ -111,4 +128,5 @@ const FlexExample = () => (
       <PlaceHolder className="inline" />
     </Flex>
   </div>
-);
+  )
+};

@@ -11,7 +11,7 @@ const DemoLine_picker = (props) => {
     asyncFetch();
     console.log(startTime);
     console.log(endTime);
-  }, []);
+  }, [startTime]);
 
   const asyncFetch = () => {
     fetch("http://47.110.147.58:55556/api/getdata", {
