@@ -39,7 +39,7 @@ const FlexExample = () => {
     <ProgressLine percent={count} />
     <TabExample ticker = {count}/>
     <NumView ticker = {count}/>
-    {/* <TimePicker/> */}
+    <TimePicker/>
     <div className="sub-title">Basic</div>
     <Flex>
       <Flex.Item>

@@ -15,6 +15,7 @@ export default class TimePicker extends React.Component {
     this.state = {
       en: false,
       show: false,
+      showchart:false,
       config: {},
     };
   }
@@ -42,9 +43,11 @@ export default class TimePicker extends React.Component {
   }
 
   onConfirm = (startTime, endTime) => {
+    console.log(startTime,endTime.getTime());
     document.getElementsByTagName('body')[0].style.overflowY = this.originbodyScrollY;
     this.setState({
       show: false,
+      showchart:true,
       startTime,
       endTime,
     });
@@ -64,20 +67,6 @@ export default class TimePicker extends React.Component {
       <div>
         <List className="calendar-list" style={{ backgroundColor: 'white' }}>
           {this.renderBtn('选择日期时间区间(快捷)', 'Select DateTime Range (Shortcut)', { pickTime: true, showShortcut: true,enterDirection: 'horizontal' })}
-          {/* {this.renderBtn('onSelect API', 'onSelect API', {
-            onSelect: (date, state) => {
-              console.log('onSelect', date, state);
-              return [date, new Date(+now - 604800000)];
-            },
-          })} */}
-          {
-            this.state.startTime &&
-            <List.Item>Time1: {this.state.startTime.toLocaleString()}</List.Item>
-          }
-          {
-            this.state.endTime &&
-            <List.Item>Time2: {this.state.endTime.toLocaleString()}</List.Item>
-          }
         </List>
         <Calendar
           {...this.state.config}
@@ -89,8 +78,7 @@ export default class TimePicker extends React.Component {
           minDate={new Date(+now - 5184000000)}
           maxDate={new Date(+now + 31536000000)}
         />
-        {/* <DemoLine_picker startTime={10} endTime = {20}/> */}
-        <DemoLine_picker startTime={10} endTime = {this.state.endTime}/>
+        {this.state.showchart&&<DemoLine_picker startTime={this.state.startTime.getTime()} endTime = {this.state.endTime.getTime()}/>}
       </div>
     );
   }
