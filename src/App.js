@@ -3,10 +3,13 @@ import "./styles.css";
 
 import { Flex, WhiteSpace } from "antd-mobile";
 import "antd-mobile/dist/antd-mobile.css";
-
+//进度条组件
 import ProgressLine from "./progressline"
+//table切换组件
 import TabExample from "./table"
+//单数据展示组件
 import NumView from "./numview"
+//日期选择组件
 import TimePicker from "./timepicker"
 
 export default function App() {
@@ -36,9 +39,9 @@ const FlexExample = () => {
   const count = useTicker();
   return (
   <div className="flex-container">
+    <NumView ticker = {count}/>
     <ProgressLine percent={count} />
     <TabExample ticker = {count}/>
-    <NumView ticker = {count}/>
     <TimePicker/>
     <div className="sub-title">Basic</div>
     <Flex>
