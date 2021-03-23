@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Tabs, WhiteSpace, Badge } from 'antd-mobile';
 
-import DemoLine_d from "./chart_d";
-import DemoLine_h from "./chart_h";
-import DemoLine_m from "./chart_m";
+import DemoLine_t from "./chart_time";
+
 
 const tabs = [
   { title: <Badge >分</Badge> },
@@ -21,14 +20,14 @@ const TabExample = (props) => {
       onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
     >
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '200px', backgroundColor: '#fff' ,padding:'10%'}}>
-        <DemoLine_m ticker = {ticker} source="aaaa"/>
+      <DemoLine_t ticker = {ticker} type="m" source={["sensor0","sensor1"]}/>
+      </div>
+      {/* <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '200px', backgroundColor: '#fff' ,padding:'10%'}}>
+      <DemoLine_t ticker = {ticker} type="h" source={["sensor0","sensor1"]}/>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '200px', backgroundColor: '#fff' ,padding:'10%'}}>
-      <DemoLine_h ticker = {ticker} source="aaaa"/>
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '200px', backgroundColor: '#fff' ,padding:'10%'}}>
-      <DemoLine_d ticker = {ticker} source="aaaa"/>
-      </div>
+      <DemoLine_t ticker = {ticker} type="d" source={["sensor0","sensor1"]}/>
+      </div> */}
     </Tabs>
     <WhiteSpace />
 

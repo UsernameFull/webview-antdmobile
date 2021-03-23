@@ -40,10 +40,11 @@ const FlexExample = () => {
   return (
   <div className="flex-container">
     <NumView ticker = {count}/>
-    <ProgressLine percent={count} />
+    {/* <ProgressLine percent={count} /> */}
     <TabExample ticker = {count}/>
-    <TimePicker/>
-    <div className="sub-title">Basic</div>
+    {/* <TimePicker/> */}
+    
+    {/* <div className="sub-title">Basic</div>
     <Flex>
       <Flex.Item>
         <PlaceHolder />
@@ -129,7 +130,7 @@ const FlexExample = () => {
       <PlaceHolder className="inline" />
       <PlaceHolder className="inline small" />
       <PlaceHolder className="inline" />
-    </Flex>
+    </Flex> */}
   </div>
   )
 };
