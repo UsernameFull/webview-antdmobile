@@ -36,7 +36,7 @@ const NumView = (props) => {
     let tt=[];
      (async()=>{
       const res = await fetch("http://47.110.147.58:55556/api/getdata", {
-      method: "POST",
+      method: "",
       mode: "cors",
       headers: {
         "Content-Type": "application/json",

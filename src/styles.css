@@ -27,3 +27,24 @@
   line-height: 30px;
   width: 100%;
 }
+
+.txt{
+  border-radius: 7px 7px 0 0;
+  font-size: 14px;
+  background-color: #ebebef;
+  height: 20px;
+  line-height: 20px;
+  padding: 2px;
+  width: 80%;
+  border-bottom: 1px solid rgb(149, 149, 149);
+}
+
+.data{
+  border-radius: 0 0 7px 7px;
+  font-size: 16px;
+  background-color: #ebebef;
+  height: 30px;
+  line-height: 30px;
+  padding: 2px;
+  width: 80%;
+}
